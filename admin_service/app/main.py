@@ -13,7 +13,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    description="Admin Service API for ZCare Platform",
+    description="Admin Service API for ZCare Platforms",
     version="0.1.0",
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )

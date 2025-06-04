@@ -5,31 +5,28 @@ services:
     env: docker
     rootDir: admin_service
     dockerfilePath: ./Dockerfile
-    envVars:
-      - key: DATABASE_URL
+    envVars:      - key: DATABASE_URL
         fromDatabase:
-          name: admin-postgres
+          name: admin-service-db
           property: connectionString
       - key: DB_HOST
         fromDatabase:
-          name: admin-postgres
+          name: admin-service-db
           property: host
       - key: DB_PORT
         fromDatabase:
-          name: admin-postgres
+          name: admin-service-db
           property: port
       - key: DB_USER
         fromDatabase:
-          name: admin-postgres
+          name: admin-service-db
           property: user
       - key: DB_PASSWORD
         fromDatabase:
-          name: admin-postgres
+          name: admin-service-db
           property: password
       - key: DB_NAME
-        fromDatabase:
-          name: admin-postgres
-          property: database
+        value: admin_service
       - key: ENVIRONMENT
         value: production
       - key: API_V1_STR
@@ -42,6 +39,7 @@ services:
 
 databases:
   # PostgreSQL database
-  - name: admin-postgres
-    plan: standard
-    ipAllowList: [] # Allow all IPs
+  - name: admin-service-db
+    plan: free
+    databaseName: admin_service
+    ipAllowList: []
