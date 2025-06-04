@@ -1,5 +1,6 @@
 services:
-  # Admin Service API  - type: web
+  # Admin Service API
+  - type: web
     name: admin-service
     env: docker
     rootDir: admin_service
