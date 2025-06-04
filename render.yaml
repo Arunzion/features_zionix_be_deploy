@@ -1,8 +1,10 @@
 services:
-  # Admin Service API  - type: web
+  # Admin Service API
+  - type: web
     name: admin-service
     env: docker
-    dockerfilePath: ./admin_service/Dockerfile
+    rootDir: admin_service
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
