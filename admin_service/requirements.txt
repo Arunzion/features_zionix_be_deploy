@@ -1,0 +1,23 @@
+# FastAPI and ASGI server
+pydantic>=2.0
+pydantic-settings>=0.2.0
+fastapi>=0.100.0
+uvicorn[standard]
+
+# Database
+sqlalchemy>=2.0.0,<2.1.0
+psycopg2-binary>=2.9.1,<2.10.0
+alembic>=1.12.0,<1.13.0
+
+# Kafka
+aiokafka>=0.7.2,<0.8.0
+
+# Authentication
+python-jose[cryptography]>=3.3.0,<4.0.0
+passlib[bcrypt]>=1.7.4,<2.0.0
+python-multipart>=0.0.6,<0.1.0
+
+# Utilities
+python-dotenv>=1.0.0,<2.0.0
+requests>=2.31.0,<3.0.0
+tenacity>=8.2.0,<9.0.0

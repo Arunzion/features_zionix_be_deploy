@@ -1,0 +1,51 @@
+services:
+  admin_postgres:
+    image: postgres:15-alpine
+    container_name: admin_postgres
+    environment:
+      - POSTGRES_DB=admin_service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Arunnathan
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./admin_service/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - zcare-network
+    restart: unless-stopped
+
+  admin_service:
+    build:
+      context: ./admin_service
+      dockerfile: Dockerfile
+    container_name: admin_service
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:Arunnathan@admin_postgres:5432/admin_service
+      - DB_HOST=admin_postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=Arunnathan
+      - DB_NAME=admin_service
+      - API_V1_STR=/api/v1
+      - PROJECT_NAME=ZCare Admin Service
+      - CORS_ORIGINS=["http://localhost:3000", "http://localhost:8000"]
+      - ENVIRONMENT=development
+      - DEBUG=true
+    depends_on:
+      - admin_postgres
+    networks:
+      - zcare-network
+    volumes:
+      - ./admin_service:/app
+    restart: unless-stopped
+
+networks:
+  zcare-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
