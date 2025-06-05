@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.db.session import SessionLocal
 
-# OAuth2 scheme for token authentication
+# OAuth2 scheme for token authentication tocken
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.AUTH_SERVICE_URL}/api/v1/auth/token")
 
 # Database dependency
