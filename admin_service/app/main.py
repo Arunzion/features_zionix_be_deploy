@@ -38,10 +38,10 @@ async def root():
 @app.get("/health")
 async def health_check():
     try:
-        # Check database connection
-        async with engine.connect() as connection:
-            await connection.execute(text("SELECT 1"))
-            await connection.commit()
+        # Check database connection using sync engine
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+            connection.commit()
         
         return {
             "status": "healthy",

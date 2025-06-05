@@ -21,9 +21,9 @@ class Settings(BaseSettings):
         raise ValueError(v)
 
     # Database settings
-    DB_HOST: str = "localhost"
+    DB_HOST: str = "admin_postgres"
     DB_USER: str = "postgres"
-    DB_PASSWORD: str = ""
+    DB_PASSWORD: str = "Arunnathan"
     DB_NAME: str = "admin_service"
     DB_PORT: str = "5432"
     DATABASE_URL: str = None  # Will be overridden by Render's environment variable

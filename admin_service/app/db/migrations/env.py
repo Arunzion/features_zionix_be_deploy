@@ -23,7 +23,7 @@ config = context.config
 fileConfig(config.config_file_name)
 
 # Set the database URL in the alembic.ini file
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+config.set_main_option("sqlalchemy.url", "postgresql://postgres:Arunnathan@localhost:5432/admin_service")
 
 # add your model's MetaData object here
 # for 'autogenerate' support

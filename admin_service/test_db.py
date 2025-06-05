@@ -3,8 +3,9 @@ from app.core.config import settings
 
 def test_connection():
     try:
-        # Create engine with the configured DATABASE_URL
-        engine = create_engine(settings.DATABASE_URL)
+        # Create a direct connection for testing
+        connection_string = "postgresql://postgres:Arunnathan@localhost:5432/admin_service"
+        engine = create_engine(connection_string)
         
         # Try to connect and execute a simple query
         with engine.connect() as connection:
